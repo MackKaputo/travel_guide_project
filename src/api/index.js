@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
+const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'  //Api link to be moved to .env
 
 const options = {
     url: URL,
