@@ -12,14 +12,14 @@ const options = {
  * @param {*} ne : north east
  * @returns 
  */
-export const getPlacesData = async () => {
+export const getPlacesData = async (sw, ne) => {
     try {
           const { data: { data }} =  await axios.get(URL, {
             params: {
-              bl_latitude: '11.847676',//sw.lat, //bottom_left
-              tr_latitude: '12.838442',//ne.lat, //top_right
-              bl_longitude: '109.095887',//sw.lng,
-              tr_longitude: '109.149359'//ne.lng,
+              bl_latitude: sw.lat, //bottom_left '11.847676',//
+              tr_latitude: ne.lat, //top_right'12.838442',//
+              bl_longitude: sw.lng, //'109.095887',
+              tr_longitude: ne.lng, //'109.149359'//
            
             },
             headers: {
