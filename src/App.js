@@ -12,7 +12,11 @@ function App() {
   const [places, setPlaces] = useState([])
 
   const [coordinates,setCoordinates] = useState({})
-  const [bounds, setBounds] = useState(null)  
+  const [bounds, setBounds] = useState(null)
+
+  const [childClicked, setChildClicked] = useState(null)
+
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
     // Get user current location using the browser's geolocation
@@ -22,18 +26,17 @@ function App() {
   }, [])
 
   useEffect(() => {
-    // console.log(coordinates, bounds)
-
-    // console.log("=================111=====================")
-    // console.log(bounds)
-    // console.log("==================222====================")
+    
     // Wait for bound to set from Map before making API request 
     if(bounds) {
+      setLoading(true)
       getPlacesData(bounds.sw, bounds.ne)
       .then((data) => {
         //console.log(data)
 
         setPlaces(data)
+
+        setLoading(false)
       })
       .catch((error) => {
         console.log(error)
@@ -49,13 +52,19 @@ function App() {
         
         <Grid container spacing={3} style={{ width: "100%"}}>
             <Grid item xs={12} md={4}>
-                <List places={places} />
+                <List 
+                    places={places}
+                    childClicked={childClicked} 
+                    isLoading={isLoading}
+                />
             </Grid>
             <Grid item xs={12} md={8}>
                 <Map
                     setCoordinates={setCoordinates}
                     setBounds={setBounds} 
                     coordinates={coordinates}
+                    places={places}
+                    setChildClicked={setChildClicked}
                 />
             </Grid>
         </Grid>
