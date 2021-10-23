@@ -11,10 +11,10 @@ function Header() {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#54d431"}}>
           <Toolbar className={classes.toolbar}>
                 <Typography variant="h5" className={classes.title}>
-                    Travel Advisor
+                    Travel Guide by Mack
                 </Typography>
                 
                 <Box display="flex">

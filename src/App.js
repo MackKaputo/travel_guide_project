@@ -12,27 +12,34 @@ function App() {
   const [places, setPlaces] = useState([])
 
   const [coordinates,setCoordinates] = useState({})
-  const [bounds, setBounds] = useState(null)
+  const [bounds, setBounds] = useState(null)  
 
   useEffect(() => {
-    // Get my current location using the browser's geolocation
+    // Get user current location using the browser's geolocation
     navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}) => {
       setCoordinates({ lat: latitude, lng: longitude })
     })
   }, [])
 
   useEffect(() => {
-    console.log(coordinates, bounds)
+    // console.log(coordinates, bounds)
 
-    getPlacesData()
+    // console.log("=================111=====================")
+    // console.log(bounds)
+    // console.log("==================222====================")
+    // Wait for bound to set from Map before making API request 
+    if(bounds) {
+      getPlacesData(bounds.sw, bounds.ne)
       .then((data) => {
-        console.log(data)
+        //console.log(data)
 
         setPlaces(data)
       })
       .catch((error) => {
         console.log(error)
       })
+    }
+    
   }, [coordinates, bounds])
   
   return (
