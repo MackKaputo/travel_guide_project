@@ -32,7 +32,8 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
       >
         {
           places.map((place, i) => {
-            <div
+
+            return (<div
               className={classes.markerContainer}
               lat={Number(place.latitude)}
               lng={Number(place.longitude)}
@@ -55,7 +56,7 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
                   </Paper>
                 )
               }
-            </div>
+            </div>)
           })
         }
 
