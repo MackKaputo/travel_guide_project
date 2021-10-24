@@ -31,7 +31,7 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
         onChildClick={(child) => setChildClicked(child)}
       >
         {
-          places.map((place, i) => {
+          places?.map((place, i) => {
 
             return (<div
               className={classes.markerContainer}

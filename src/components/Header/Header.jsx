@@ -30,7 +30,7 @@ function Header({ setCoordinates }) {
       <AppBar position="static" style={{ backgroundColor: "#6192c9"}}>
           <Toolbar className={classes.toolbar}>
                 <Typography variant="h5" className={classes.title}>
-                    Travel Guide By Mack
+                    Travel Guide
                 </Typography>
                 
                 <Box display="flex">

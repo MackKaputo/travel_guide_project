@@ -62,7 +62,7 @@ function App() {
         <Header setCoordinates={setCoordinates} />
         
         <Grid container spacing={3} style={{ width: "100%"}}>
-            <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4}>
                 <List 
                     places={ filteredPlaces.length > 0 ? filteredPlaces: places }
                     childClicked={childClicked} 
@@ -81,7 +81,12 @@ function App() {
                     places={filteredPlaces.length > 0 ? filteredPlaces: places}
                     setChildClicked={setChildClicked}
                 />
-            </Grid>
+                <div>
+                  <h2 style={{ display: "grid", placeItems: "center", margin: "2em", color:"#021129"}}>
+                    Click on the map and drag to view more places! 
+                  </h2>
+                </div>
+            </Grid>     
         </Grid>
     </React.Fragment>
   )
