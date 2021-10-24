@@ -12,9 +12,9 @@ const options = {
  * @param {*} ne : north east
  * @returns 
  */
-export const getPlacesData = async (sw, ne) => {
+export const getPlacesData = async (type, sw, ne) => {
     try {
-          const { data: { data }} =  await axios.get(URL, {
+          const { data: { data }} =  await axios.get(`https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`, {
             params: {
               bl_latitude: sw.lat, //bottom_left '11.847676',//
               tr_latitude: ne.lat, //top_right'12.838442',//
@@ -24,7 +24,7 @@ export const getPlacesData = async (sw, ne) => {
             },
             headers: {
               'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-              'x-rapidapi-key': '1cc9cef7e7mshd52c4d62b274316p15b0f2jsnfa8ce09bbacb'
+              'x-rapidapi-key': process.env.REACT_APP_RAPID_API_TRAVEL_ADVISOR
             }
           })
 
