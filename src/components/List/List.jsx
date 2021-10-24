@@ -5,21 +5,21 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails'
 
 import useStyles from './styles'
 
-function List({ places, childClicked, isLoading }) {
+function List({ places, childClicked, isLoading, type, setType, rating, setRating }) {
   const classes = useStyles()
-  const [type, setType] = useState('restaurants')
-  const [rating, setRating ] = useState('')
 
   // Element References
   const [elRefs, setElRefs] = useState([])
   //console.log({ childClicked })
 
   useEffect(() => {
-    const refs = Array(places.length).fill().map((_, i) => {
-      return elRefs[i] || createRef()
-    })
-
-    setElRefs(refs)
+    if(places.length) {
+      const refs = Array(places?.length).fill().map((_, i) => {
+        return elRefs[i] || createRef()
+      })
+  
+      setElRefs(refs)
+    }
 
   }, [places])
 
@@ -52,7 +52,7 @@ function List({ places, childClicked, isLoading }) {
             </FormControl>
 
             <Grid container spacing={3} className={classes.list}>
-              {places.map((place, i) => (
+              {places?.length > 0 ? places?.map((place, i) => (
                 <Grid item key={i} xs={12}>
                   <PlaceDetails 
                     place={place}
@@ -60,7 +60,7 @@ function List({ places, childClicked, isLoading }) {
                     refProp={elRefs[i]} 
                   />
                 </Grid>
-              ))}
+              )): <h2 style={{ margin: "3em", padding:"1em", textAlign:"center" }}>No results found</h2>}
             </Grid> 
         </React.Fragment>
       )}
